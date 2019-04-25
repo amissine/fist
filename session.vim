@@ -10,7 +10,7 @@ endif
 set shortmess=aoO
 badd +4 .travis.yml
 badd +3 before_install.sh
-badd +0 .gitignore
+badd +72 .gitignore
 argglobal
 silent! argdel *
 $argadd .travis.yml
