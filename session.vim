@@ -9,27 +9,23 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +4 .travis.yml
-badd +3 before_install.sh
+badd +1 before_install.sh
 badd +72 .gitignore
 argglobal
 silent! argdel *
 $argadd .travis.yml
-edit .gitignore
+edit before_install.sh
 set splitbelow splitright
 wincmd _ | wincmd |
 split
-wincmd _ | wincmd |
-split
-2wincmd k
-wincmd w
+1wincmd k
 wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe '1resize ' . ((&lines * 15 + 24) / 48)
-exe '2resize ' . ((&lines * 15 + 24) / 48)
-exe '3resize ' . ((&lines * 14 + 24) / 48)
+exe '1resize ' . ((&lines * 23 + 24) / 48)
+exe '2resize ' . ((&lines * 22 + 24) / 48)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -40,31 +36,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 72 - ((14 * winheight(0) + 7) / 15)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-72
-normal! 0
-lcd ~/project/fist
-wincmd w
-argglobal
-edit ~/project/fist/before_install.sh
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 3 - ((1 * winheight(0) + 7) / 15)
+let s:l = 3 - ((2 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 3
-normal! 045|
+normal! 0
 lcd ~/project/fist
 wincmd w
 argglobal
@@ -78,16 +55,15 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 4 - ((1 * winheight(0) + 7) / 14)
+let s:l = 1 - ((0 * winheight(0) + 11) / 22)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-4
-normal! 09|
+1
+normal! 0
 wincmd w
-exe '1resize ' . ((&lines * 15 + 24) / 48)
-exe '2resize ' . ((&lines * 15 + 24) / 48)
-exe '3resize ' . ((&lines * 14 + 24) / 48)
+exe '1resize ' . ((&lines * 23 + 24) / 48)
+exe '2resize ' . ((&lines * 22 + 24) / 48)
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
