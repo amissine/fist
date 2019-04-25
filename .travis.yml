@@ -2,4 +2,5 @@ sudo: required
 services:
   - docker
 language: node_js
+node_js: 6.9
 before_install: './before_install.sh eth0'
