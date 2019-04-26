@@ -2,5 +2,5 @@ dist: xenial
 services:
   - docker
 language: node_js
-node_js: latest
+node_js: 6.17
 before_install: './before_install.sh eth0'
