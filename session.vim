@@ -8,8 +8,8 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +4 .travis.yml
-badd +1 before_install.sh
+badd +5 .travis.yml
+badd +3 before_install.sh
 badd +72 .gitignore
 argglobal
 silent! argdel *
@@ -24,8 +24,8 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe '1resize ' . ((&lines * 23 + 24) / 48)
-exe '2resize ' . ((&lines * 22 + 24) / 48)
+exe '1resize ' . ((&lines * 22 + 24) / 48)
+exe '2resize ' . ((&lines * 23 + 24) / 48)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -36,12 +36,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 3 - ((2 * winheight(0) + 11) / 23)
+let s:l = 4 - ((3 * winheight(0) + 11) / 22)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-3
-normal! 0
+4
+normal! 015|
 lcd ~/project/fist
 wincmd w
 argglobal
@@ -55,15 +55,16 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 11) / 22)
+let s:l = 5 - ((4 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+5
+normal! 012|
 wincmd w
-exe '1resize ' . ((&lines * 23 + 24) / 48)
-exe '2resize ' . ((&lines * 22 + 24) / 48)
+2wincmd w
+exe '1resize ' . ((&lines * 22 + 24) / 48)
+exe '2resize ' . ((&lines * 23 + 24) / 48)
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

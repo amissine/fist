@@ -1,6 +1,6 @@
-sudo: required
+dist: xenial
 services:
   - docker
 language: node_js
-node_js: 6.9
+node_js: latest
 before_install: './before_install.sh eth0'
