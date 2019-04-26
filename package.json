@@ -1,0 +1,30 @@
+{
+  "name": "fist",
+  "version": "1.0.0",
+  "description": "Integration Tests of Stellar components for Financial Institutions",
+  "main": "https-proxy.js",
+  "dependencies": {
+    "node-fetch": "^2.3.0",
+    "http-proxy": "^1.16.2",
+    "stellar-sdk": "^0.15.0",
+    "axios": "^0.15.3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amissine/fist.git"
+  },
+  "keywords": [
+    "stellar-integration-tests",
+    "Docker",
+    "DevOps",
+    "Github",
+    "Travis-CI"
+  ],
+  "author": "Alec Missine",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amissine/fist/issues"
+  },
+  "homepage": "https://github.com/amissine/fist#readme"
+}
