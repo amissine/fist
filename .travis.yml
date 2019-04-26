@@ -3,4 +3,4 @@ services:
   - docker
 language: node_js
 node_js: 6.17
-before_install: './before_install.sh eth0'
+before_install: './before_install.sh ens4'
