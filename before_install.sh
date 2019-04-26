@@ -10,4 +10,4 @@ echo $VM_IP_ADDRESS
 
 # Run 'npm install' and launch the proxy
 npm install
-node https-proxy.js &
+sudo node https-proxy.js &
