@@ -4,5 +4,4 @@ services:
 language: node_js
 node_js: 6.17
 cache: npm
-before_install: './before_install.sh ens4'
-script: './script.sh'
+script: './script.sh ens4'
