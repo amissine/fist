@@ -4,7 +4,7 @@
   "description": "Integration Tests of Stellar components for Financial Institutions",
   "main": "https-proxy.js",
   "scripts": {
-    "test": "node https-proxy.js"
+    "test": "sudo node https-proxy.js"
   },
   "dependencies": {
     "node-fetch": "^2.3.0",
