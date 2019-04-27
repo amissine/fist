@@ -1,1 +1,1 @@
-sudo -E $(which node) https-proxy.js &
+sudo -E $(which node) https-proxy.js
