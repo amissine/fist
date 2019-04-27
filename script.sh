@@ -1,2 +1,1 @@
-ls -la `which node`
-sudo -E node https-proxy.js &
+sudo -E $(which node) https-proxy.js &
