@@ -1,6 +1,7 @@
 # Display the VM and docker info
-uname -a
-docker info
+#uname -a
+#docker info
+netstat -anop
 
 # Determine the IP address of the VM
 VM_IP_ADDRESS=`ifconfig | grep -A 1 $1 | grep 'inet addr:'`
@@ -10,4 +11,4 @@ echo $VM_IP_ADDRESS
 
 # Run 'npm install' and launch the proxy
 npm install
-sudo node https-proxy.js &
+node https-proxy.js &
