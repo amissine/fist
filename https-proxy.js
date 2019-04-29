@@ -24,16 +24,20 @@ const proxy = require('http-proxy').createProxy({})
 const fs = require('fs')
 const pkfile = process.argv[2]
 const certfile = process.argv[3]
-const map = {
-  'hq.fi1.com':'http://localhost:8000',
-  'hq.fi2.com':'http://localhost:9000'
-}
-const timeout = 30*1000
+const map = new Map([
+  [process.env.FI1_DOMAIN, process.env.FI1_DOMAIN_LOCAL_URL],
+  [process.env.FI2_DOMAIN, process.env.FI2_DOMAIN_LOCAL_URL]
+//  'hq.fi1.com':'http://localhost:8000',
+//  'hq.fi2.com':'http://localhost:9000'
+])
+console.log(map)
+
+const timeout = process.env.PROXY_TIMEOUT_MS // 30*1000
 
 if (!pkfile && !certfile) {
   console.log('Starting HTTP proxy; timing out in', timeout, 'ms')
   http.createServer(
-    (req, res) => proxy.web(req, res, { target: map[req.headers.host] })
+    (req, res) => proxy.web(req, res, { target: map.get(req.headers.host) })
   ).listen(80)
 }
 else {
@@ -43,7 +47,7 @@ else {
       key: fs.readFileSync(pkfile, 'utf8'),
       cert: fs.readFileSync(certfile, 'utf8')
     },
-    (req, res) => proxy.web(req, res, { target: map[req.headers.host] })
+    (req, res) => proxy.web(req, res, { target: map.get(req.headers.host) })
   ).listen(443)
 }
 setTimeout(() => {
