@@ -12,11 +12,13 @@ badd +9 .travis.yml
 badd +3 before_install.sh
 badd +72 .gitignore
 badd +1 package.json
-badd +56 https-proxy.js
+badd +35 https-proxy.js
 badd +1 Makefile
-badd +31 script.sh
-badd +2 common.env
-badd +0 sp
+badd +21 script.sh
+badd +1 common.env
+badd +1 sp
+badd +13 ~/product/integration-tests/local.sh
+badd +1 useIssuer.js
 argglobal
 silent! argdel *
 $argadd .travis.yml
@@ -108,9 +110,9 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe '1resize ' . ((&lines * 4 + 23) / 47)
-exe '2resize ' . ((&lines * 17 + 23) / 47)
-exe '3resize ' . ((&lines * 21 + 23) / 47)
+exe '1resize ' . ((&lines * 14 + 23) / 47)
+exe '2resize ' . ((&lines * 14 + 23) / 47)
+exe '3resize ' . ((&lines * 14 + 23) / 47)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -121,12 +123,31 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 4 - ((3 * winheight(0) + 2) / 4)
+let s:l = 2 - ((1 * winheight(0) + 7) / 14)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-4
-normal! 07|
+2
+normal! 0
+lcd ~/project/fist
+wincmd w
+argglobal
+edit ~/project/fist/useIssuer.js
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 44 - ((13 * winheight(0) + 7) / 14)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+44
+normal! 03|
 lcd ~/project/fist
 wincmd w
 argglobal
@@ -140,37 +161,18 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 35 - ((16 * winheight(0) + 8) / 17)
+let s:l = 21 - ((4 * winheight(0) + 7) / 14)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-35
-normal! 0
-lcd ~/project/fist
-wincmd w
-argglobal
-edit ~/project/fist/https-proxy.js
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 45 - ((19 * winheight(0) + 10) / 21)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-45
-normal! 021|
+21
+normal! 030|
 lcd ~/project/fist
 wincmd w
 2wincmd w
-exe '1resize ' . ((&lines * 4 + 23) / 47)
-exe '2resize ' . ((&lines * 17 + 23) / 47)
-exe '3resize ' . ((&lines * 21 + 23) / 47)
+exe '1resize ' . ((&lines * 14 + 23) / 47)
+exe '2resize ' . ((&lines * 14 + 23) / 47)
+exe '3resize ' . ((&lines * 14 + 23) / 47)
 tabnext 2
 set stal=1
 if exists('s:wipebuf')

@@ -32,7 +32,7 @@ const map = new Map([
 ])
 console.log(map)
 
-const timeout = process.env.PROXY_TIMEOUT_MS // 30*1000
+const timeout = process.env.PROXY_TIMEOUT_MS // 60*1000
 
 if (!pkfile && !certfile) {
   console.log('Starting HTTP proxy; timing out in', timeout, 'ms')
