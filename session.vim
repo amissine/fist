@@ -14,11 +14,14 @@ badd +72 .gitignore
 badd +1 package.json
 badd +35 https-proxy.js
 badd +1 Makefile
-badd +21 script.sh
+badd +49 script.sh
 badd +1 common.env
 badd +1 sp
 badd +13 ~/product/integration-tests/local.sh
-badd +1 useIssuer.js
+badd +44 useIssuer.js
+badd +1 DOckerfile
+badd +1 Dockerfile
+badd +0 check_components.sh
 argglobal
 silent! argdel *
 $argadd .travis.yml
@@ -36,9 +39,9 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe '1resize ' . ((&lines * 14 + 23) / 47)
-exe '2resize ' . ((&lines * 14 + 23) / 47)
-exe '3resize ' . ((&lines * 14 + 23) / 47)
+exe '1resize ' . ((&lines * 24 + 24) / 48)
+exe '2resize ' . ((&lines * 8 + 24) / 48)
+exe '3resize ' . ((&lines * 11 + 24) / 48)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -49,11 +52,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 7) / 14)
+let s:l = 30 - ((23 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+30
 normal! 0
 lcd ~/project/fist
 wincmd w
@@ -68,11 +71,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 7 - ((6 * winheight(0) + 7) / 14)
+let s:l = 1 - ((0 * winheight(0) + 4) / 8)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-7
+1
 normal! 0
 lcd ~/project/fist
 wincmd w
@@ -87,32 +90,36 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 7) / 14)
+let s:l = 10 - ((9 * winheight(0) + 5) / 11)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+10
+normal! 034|
 wincmd w
-exe '1resize ' . ((&lines * 14 + 23) / 47)
-exe '2resize ' . ((&lines * 14 + 23) / 47)
-exe '3resize ' . ((&lines * 14 + 23) / 47)
+exe '1resize ' . ((&lines * 24 + 24) / 48)
+exe '2resize ' . ((&lines * 8 + 24) / 48)
+exe '3resize ' . ((&lines * 11 + 24) / 48)
 tabedit ~/project/fist/common.env
 set splitbelow splitright
 wincmd _ | wincmd |
 split
 wincmd _ | wincmd |
 split
-2wincmd k
+wincmd _ | wincmd |
+split
+3wincmd k
+wincmd w
 wincmd w
 wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe '1resize ' . ((&lines * 14 + 23) / 47)
-exe '2resize ' . ((&lines * 14 + 23) / 47)
-exe '3resize ' . ((&lines * 14 + 23) / 47)
+exe '1resize ' . ((&lines * 14 + 24) / 48)
+exe '2resize ' . ((&lines * 2 + 24) / 48)
+exe '3resize ' . ((&lines * 7 + 24) / 48)
+exe '4resize ' . ((&lines * 19 + 24) / 48)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -132,7 +139,7 @@ normal! 0
 lcd ~/project/fist
 wincmd w
 argglobal
-edit ~/project/fist/useIssuer.js
+edit ~/project/fist/Dockerfile
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -142,12 +149,31 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 44 - ((13 * winheight(0) + 7) / 14)
+let s:l = 1 - ((0 * winheight(0) + 1) / 2)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-44
-normal! 03|
+1
+normal! 0
+lcd ~/project/fist
+wincmd w
+argglobal
+edit ~/project/fist/check_components.sh
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 1 - ((0 * winheight(0) + 3) / 7)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
 lcd ~/project/fist
 wincmd w
 argglobal
@@ -161,18 +187,19 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 21 - ((4 * winheight(0) + 7) / 14)
+let s:l = 49 - ((18 * winheight(0) + 9) / 19)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-21
-normal! 030|
+49
+normal! 0
 lcd ~/project/fist
 wincmd w
-2wincmd w
-exe '1resize ' . ((&lines * 14 + 23) / 47)
-exe '2resize ' . ((&lines * 14 + 23) / 47)
-exe '3resize ' . ((&lines * 14 + 23) / 47)
+3wincmd w
+exe '1resize ' . ((&lines * 14 + 24) / 48)
+exe '2resize ' . ((&lines * 2 + 24) / 48)
+exe '3resize ' . ((&lines * 7 + 24) / 48)
+exe '4resize ' . ((&lines * 19 + 24) / 48)
 tabnext 2
 set stal=1
 if exists('s:wipebuf')

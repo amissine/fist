@@ -1,7 +1,7 @@
 #
 # To run locally:
 #
-# ./script.sh enp2s0
+# ./script.sh enp2s0 amissine
 #
 set -e
 
@@ -30,6 +30,14 @@ node checkAccount.js $FI2_RECEIVING_ACCOUNT
 node checkAccount.js $ISSUING_ACCOUNT
 node useIssuer.js $ISSUING_SEED 20 TEST $FI1_RECEIVING_SEED 6
 node useIssuer.js $ISSUING_SEED 20 TEST $FI2_RECEIVING_SEED 9
+
+# Check/setup Stellar components - executables bridge and compliance
+./check_components.sh $2
+
+# Run the tests in the docker containers
+docker-compose up -d --build
+node runTests.js
+docker-compose down
 
 # Kill the proxy
 pid=`ps -ef | grep $proxy | grep node | tail -n 1`
