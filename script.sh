@@ -5,10 +5,7 @@
 #
 set -e
 
-echo "TRAVIS_BUILD_DIR=$TRAVIS_BUILD_DIR GOPATH=$GOPATH"
-ls -la $GOPATH
-# Check docker-compose version {{{1
-docker-compose -v
+#echo "TRAVIS_BUILD_DIR=$TRAVIS_BUILD_DIR GOPATH=$GOPATH"
 
 # Determine the IP address of the VM {{{1
 VM_IP_ADDRESS=`ifconfig | grep -A 1 $1 | grep 'inet addr:'`
