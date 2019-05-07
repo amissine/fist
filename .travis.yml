@@ -4,12 +4,13 @@ services:
 language: node_js
 node_js: 6.17
 cache:
-  npm:
   directories:
     - /usr/local/bin
+    - node_modules
 env:
   - DOCKER_COMPOSE_VERSION=1.24.0
 before_install: './before_install.sh ${DOCKER_COMPOSE_VERSION}'
 install:
+  - npm install
   - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 script: './script.sh ens4 amissine'
