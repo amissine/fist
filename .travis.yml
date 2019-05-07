@@ -3,8 +3,8 @@ services:
   - docker
 language: node_js
 node_js: 6.17
-cache: npm
 cache:
+  npm:
   directories:
     - /usr/local/bin
 env:
