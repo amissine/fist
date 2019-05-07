@@ -40,8 +40,6 @@ function check_services () {
 }
 
 test -d services || mkdir services
-ls -la services
 pushd services
 check_services
 popd
-ls -la services
