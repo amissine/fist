@@ -1,5 +1,6 @@
 # To re-init: {{{1
 rm -rf $GOPATH/bin $GOPATH/src
+mkdir $GOPATH/bin
 
 # Check $GOPATH/bin/dep executable. {{{1
 [ -x $GOPATH/bin/dep ] || \

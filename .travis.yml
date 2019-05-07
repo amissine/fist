@@ -14,5 +14,4 @@ env:
 before_install: './before_install.sh ${DOCKER_COMPOSE_VERSION}'
 install:
   - npm install
-  - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 script: './script.sh ens4 amissine'
