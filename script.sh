@@ -6,6 +6,7 @@
 set -e
 
 echo "TRAVIS_BUILD_DIR=$TRAVIS_BUILD_DIR GOPATH=$GOPATH"
+ls -la $GOPATH
 # Check docker-compose version {{{1
 docker-compose -v
 
