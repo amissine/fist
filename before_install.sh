@@ -1,3 +1,10 @@
+# To re-init: {{{1
+rm -rf $GOPATH/bin $GOPATH/src
+
+# Check $GOPATH/bin/dep executable. {{{1
+[ -x $GOPATH/bin/dep ] || \
+  curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+
 # Check docker-compose version. {{{1
 v=`docker-compose -v`
 v=${v:23}

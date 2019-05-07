@@ -4,8 +4,6 @@
 # ./script.sh enp2s0 amissine
 #
 set -e
-sudo rm -rf $GOPATH/src $GOPATH/bin
-ls -la $GOPATH
 
 # Determine the IP address of the VM {{{1
 VM_IP_ADDRESS=`ifconfig | grep -A 1 $1 | grep 'inet addr:'`
