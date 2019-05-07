@@ -12,9 +12,7 @@ function check_services () {
     if [ -d $MONOREPO ]; then  # TODO: check CLONE_URL (must be the same)
       echo ===== PULLING =====
       cd $MONOREPO
-#      [ `git pull origin master | grep 'Already up-to-date.' | wc -l` -eq 1 ] && \
-#        return
-    git pull origin master
+      [ `git pull origin master | grep Already | wc -l` -eq 1 ] && return
     else
       echo ===== CLONING =====
       mkdir -p $MONOREPO
