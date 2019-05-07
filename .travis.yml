@@ -6,7 +6,7 @@ node_js: 6.17
 cache:
   directories:
     - /usr/local/bin
-    - /home/travis/gopath/src/github.com/stellar/go
+    - /home/travis/gopath
     - node_modules
     - services
 env:
