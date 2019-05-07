@@ -4,7 +4,7 @@
 # ./script.sh enp2s0 amissine
 #
 set -e
-
+sudo rm -rf $GOPATH/src/github.com/stellar/go
 #echo "TRAVIS_BUILD_DIR=$TRAVIS_BUILD_DIR GOPATH=$GOPATH"
 
 # Determine the IP address of the VM {{{1
