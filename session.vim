@@ -14,7 +14,7 @@ badd +72 .gitignore
 badd +1 package.json
 badd +35 https-proxy.js
 badd +1 Makefile
-badd +49 script.sh
+badd +35 script.sh
 badd +1 common.env
 badd +1 sp
 badd +13 ~/product/integration-tests/local.sh
@@ -116,10 +116,10 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe '1resize ' . ((&lines * 14 + 24) / 48)
-exe '2resize ' . ((&lines * 2 + 24) / 48)
-exe '3resize ' . ((&lines * 7 + 24) / 48)
-exe '4resize ' . ((&lines * 19 + 24) / 48)
+exe '1resize ' . ((&lines * 10 + 24) / 48)
+exe '2resize ' . ((&lines * 11 + 24) / 48)
+exe '3resize ' . ((&lines * 10 + 24) / 48)
+exe '4resize ' . ((&lines * 11 + 24) / 48)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -130,7 +130,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 2 - ((1 * winheight(0) + 7) / 14)
+let s:l = 2 - ((1 * winheight(0) + 5) / 10)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -149,7 +149,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 1) / 2)
+let s:l = 1 - ((0 * winheight(0) + 5) / 11)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -168,11 +168,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 3) / 7)
+let s:l = 43 - ((36 * winheight(0) + 5) / 10)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+43
 normal! 0
 lcd ~/project/fist
 wincmd w
@@ -187,20 +187,42 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 49 - ((18 * winheight(0) + 9) / 19)
+let s:l = 35 - ((2 * winheight(0) + 5) / 11)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-49
-normal! 0
+35
+normal! 02|
 lcd ~/project/fist
 wincmd w
-3wincmd w
-exe '1resize ' . ((&lines * 14 + 24) / 48)
-exe '2resize ' . ((&lines * 2 + 24) / 48)
-exe '3resize ' . ((&lines * 7 + 24) / 48)
-exe '4resize ' . ((&lines * 19 + 24) / 48)
-tabnext 2
+exe '1resize ' . ((&lines * 10 + 24) / 48)
+exe '2resize ' . ((&lines * 11 + 24) / 48)
+exe '3resize ' . ((&lines * 10 + 24) / 48)
+exe '4resize ' . ((&lines * 11 + 24) / 48)
+tabedit ~/project/fist/check_components.sh
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 48 - ((42 * winheight(0) + 22) / 45)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+48
+normal! 0
+lcd ~/project/fist
+tabnext 3
 set stal=1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
