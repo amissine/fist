@@ -2,7 +2,6 @@
 #
 # Check/setup Stellar financial services - executables bridge and compliance
 #
-
 CLONE_URL="https://github.com/$1/go"
 PREFIX=https://github.com/stellar/bridge-server/releases/download/
 ARCH=-linux-amd64.tar.gz
@@ -42,6 +41,8 @@ function check_services () {
 }
 
 test -d services || mkdir services
+ls -la services
 pushd services
 check_services
 popd
+ls -la services
