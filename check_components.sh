@@ -1,12 +1,13 @@
 #!/bin/bash
-#
-# Check/setup Stellar financial services - executables bridge and compliance
+# {{{1
+# Check/setup Stellar financial services - executables bridge and compliance -
+# and the financial institution software components we are about to test.
 #
 CLONE_URL="https://github.com/$1/go"
 PREFIX=https://github.com/stellar/bridge-server/releases/download/
 ARCH=-linux-amd64.tar.gz
 
-function check_services () {
+function check_services () { # {{{1
   if [ "$BRIDGE_VERSION" == "master" ]; then
     export MONOREPO=$GOPATH/src/github.com/stellar/go
     if [ -d $MONOREPO ]; then  # TODO: check CLONE_URL (must be the same)
@@ -39,7 +40,25 @@ function check_services () {
   chmod +x ./bridge ./compliance
 }
 
+function check_fisc () { # {{{1
+  FISC_CLONE_URL="https://github.com/amissine/fisc"
+  if [ -d fisc ]; then # TODO: remove hardcoded stuff
+    echo ===== PULLING into fisc =====
+    cd fisc
+    [ `git pull origin master | grep Already | wc -l` -eq 1 ] && return
+  else
+    echo ===== CLONING into fisc =====
+    git clone $FISC_CLONE_URL
+    cd fisc
+  fi
+  npm install
+}
+
+# main {{{1
 test -d services || mkdir services
 pushd services
 check_services
+popd
+pushd services
+check_fisc
 popd

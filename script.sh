@@ -1,4 +1,6 @@
-# {{{1
+# Acknowledgements: {{{1
+# - https://derickbailey.com/2017/03/09/selecting-a-node-js-image-for-docker/
+#
 # To run locally:
 #
 # ./script.sh enp2s0 amissine
@@ -28,7 +30,7 @@ node checkAccount.js $ISSUING_ACCOUNT
 node useIssuer.js $ISSUING_SEED 20 TEST $FI1_RECEIVING_SEED 6
 node useIssuer.js $ISSUING_SEED 20 TEST $FI2_RECEIVING_SEED 9
 
-# Check/setup Stellar components - executables bridge and compliance {{{1
+# Check/setup Stellar and FI components to test {{{1
 ./check_components.sh $2
 
 # Run the tests in the docker containers {{{1
