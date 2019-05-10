@@ -4,6 +4,7 @@
   "description": "Integration Tests of Stellar components for Financial Institutions",
   "main": "https-proxy.js",
   "dependencies": {
+    "axios": "^0.15.3",
     "node-fetch": "^2.3.0",
     "http-proxy": "^1.16.2",
     "stellar-sdk": "^0.15.0",

@@ -10,7 +10,7 @@ set -e
 # Determine the IP address of the VM {{{1
 VM_IP_ADDRESS=`ifconfig | grep -A 1 $1 | grep 'inet addr:'`
 VM_IP_ADDRESS=${VM_IP_ADDRESS:20}
-export VM_IP_ADDRESS=${VM_IP_ADDRESS%% *}
+VM_IP_ADDRESS=${VM_IP_ADDRESS%% *}
 echo "VM_IP_ADDRESS $VM_IP_ADDRESS"
 
 # Set up the env {{{1
@@ -24,22 +24,21 @@ proxy='https-proxy.js'
 sudo -E $(which node) $proxy &
 
 # Check/setup Stellar accounts {{{1
+if [ "$3" != "skip_Stellar_accounts" ]; then
 node checkAccount.js $FI1_RECEIVING_ACCOUNT
 node checkAccount.js $FI2_RECEIVING_ACCOUNT
 node checkAccount.js $ISSUING_ACCOUNT
 node useIssuer.js $ISSUING_SEED 20 TEST $FI1_RECEIVING_SEED 6
 node useIssuer.js $ISSUING_SEED 20 TEST $FI2_RECEIVING_SEED 9
-
+fi
 # Check/setup Stellar and FI components to test {{{1
 ./check_components.sh $2
 
 # Run the tests in the docker containers {{{1
-if false; then
-docker-compose up -d --build
+docker build ./services -t services
+docker-compose --log-level INFO up & 
 node runTests.js
 docker-compose down
-fi
-
 # Kill the proxy {{{1
 pid=`ps -ef | grep $proxy | grep node | tail -n 1`
 echo $pid

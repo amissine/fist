@@ -70,6 +70,3 @@ typings/
 
 # Do NOT commit package-lock.json
 package-lock.json
-
-# Stellar financial services
-services

@@ -10,7 +10,7 @@ endif
 set shortmess=aoO
 badd +17 .travis.yml
 badd +4 before_install.sh
-badd +75 .gitignore
+badd +72 .gitignore
 badd +1 package.json
 badd +35 https-proxy.js
 badd +1 Makefile
@@ -20,8 +20,16 @@ badd +1 sp
 badd +13 ~/product/integration-tests/local.sh
 badd +44 useIssuer.js
 badd +1 DOckerfile
-badd +1 Dockerfile
-badd +10 check_components.sh
+badd +3 Dockerfile
+badd +50 check_components.sh
+badd +20 docker-compose.yml
+badd +1 fi1.env
+badd +1 fi2.env
+badd +1 services/start.sh
+badd +1 runTests.js
+badd +1 services/Dockerfile
+badd +1 services/bridge.cfg
+badd +0 services/compliance.cfg
 argglobal
 silent! argdel *
 $argadd .travis.yml
@@ -52,12 +60,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 11) / 22)
+let s:l = 7 - ((6 * winheight(0) + 11) / 22)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+7
+normal! 023|
 lcd ~/project/fist
 wincmd w
 argglobal
@@ -70,11 +78,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 23 - ((22 * winheight(0) + 2) / 4)
+let s:l = 1 - ((0 * winheight(0) + 2) / 4)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-23
+1
 normal! 0
 lcd ~/project/fist
 wincmd w
@@ -105,10 +113,7 @@ wincmd _ | wincmd |
 split
 wincmd _ | wincmd |
 split
-wincmd _ | wincmd |
-split
-3wincmd k
-wincmd w
+2wincmd k
 wincmd w
 wincmd w
 set nosplitbelow
@@ -116,11 +121,10 @@ set nosplitright
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
 exe '1resize ' . ((&lines * 10 + 24) / 48)
-exe '2resize ' . ((&lines * 11 + 24) / 48)
-exe '3resize ' . ((&lines * 10 + 24) / 48)
-exe '4resize ' . ((&lines * 11 + 24) / 48)
+exe '2resize ' . ((&lines * 21 + 24) / 48)
+exe '3resize ' . ((&lines * 12 + 24) / 48)
 argglobal
-setlocal fdm=manual
+setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
@@ -128,32 +132,14 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 5) / 10)
+16
+normal! zo
+let s:l = 3 - ((2 * winheight(0) + 5) / 10)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
-lcd ~/project/fist
-wincmd w
-argglobal
-edit ~/project/fist/Dockerfile
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 5) / 11)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-1
-normal! 018|
+3
+normal! 030|
 lcd ~/project/fist
 wincmd w
 argglobal
@@ -168,11 +154,13 @@ setlocal fdn=20
 setlocal fen
 43
 normal! zo
-let s:l = 44 - ((1 * winheight(0) + 5) / 10)
+57
+normal! zo
+let s:l = 43 - ((42 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-44
+43
 normal! 0
 lcd ~/project/fist
 wincmd w
@@ -186,9 +174,206 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-33
+26
 normal! zo
-let s:l = 1 - ((0 * winheight(0) + 5) / 11)
+let s:l = 33 - ((23 * winheight(0) + 6) / 12)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+33
+normal! 02|
+lcd ~/project/fist
+wincmd w
+exe '1resize ' . ((&lines * 10 + 24) / 48)
+exe '2resize ' . ((&lines * 21 + 24) / 48)
+exe '3resize ' . ((&lines * 12 + 24) / 48)
+tabedit ~/project/fist/runTests.js
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 99 - ((42 * winheight(0) + 22) / 45)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+99
+normal! 026|
+lcd ~/project/fist
+tabedit ~/project/fist/services/Dockerfile
+set splitbelow splitright
+wincmd _ | wincmd |
+split
+wincmd _ | wincmd |
+split
+wincmd _ | wincmd |
+split
+3wincmd k
+wincmd w
+wincmd w
+wincmd w
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+exe '1resize ' . ((&lines * 12 + 24) / 48)
+exe '2resize ' . ((&lines * 2 + 24) / 48)
+exe '3resize ' . ((&lines * 2 + 24) / 48)
+exe '4resize ' . ((&lines * 26 + 24) / 48)
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 3 - ((2 * winheight(0) + 6) / 12)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+3
+normal! 0
+lcd ~/project/fist
+wincmd w
+argglobal
+edit ~/project/fist/fi1.env
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 2 - ((1 * winheight(0) + 1) / 2)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+2
+normal! 0
+lcd ~/project/fist
+wincmd w
+argglobal
+edit ~/project/fist/fi2.env
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 2 - ((1 * winheight(0) + 1) / 2)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+2
+normal! 0
+lcd ~/project/fist
+wincmd w
+argglobal
+edit ~/project/fist/docker-compose.yml
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 53 - ((25 * winheight(0) + 13) / 26)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+53
+normal! 03|
+lcd ~/project/fist
+wincmd w
+exe '1resize ' . ((&lines * 12 + 24) / 48)
+exe '2resize ' . ((&lines * 2 + 24) / 48)
+exe '3resize ' . ((&lines * 2 + 24) / 48)
+exe '4resize ' . ((&lines * 26 + 24) / 48)
+tabedit ~/project/fist/services/start.sh
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 61 - ((44 * winheight(0) + 22) / 45)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+61
+normal! 0
+lcd ~/project/fist
+tabedit ~/project/fist/services/compliance.cfg
+set splitbelow splitright
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+exe '1resize ' . ((&lines * 18 + 24) / 48)
+exe '2resize ' . ((&lines * 26 + 24) / 48)
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 18 - ((17 * winheight(0) + 9) / 18)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+18
+normal! 0
+lcd ~/project/fist
+wincmd w
+argglobal
+edit ~/project/fist/services/bridge.cfg
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 1 - ((0 * winheight(0) + 13) / 26)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -196,11 +381,9 @@ normal! zt
 normal! 0
 lcd ~/project/fist
 wincmd w
-exe '1resize ' . ((&lines * 10 + 24) / 48)
-exe '2resize ' . ((&lines * 11 + 24) / 48)
-exe '3resize ' . ((&lines * 10 + 24) / 48)
-exe '4resize ' . ((&lines * 11 + 24) / 48)
-tabnext 1
+exe '1resize ' . ((&lines * 18 + 24) / 48)
+exe '2resize ' . ((&lines * 26 + 24) / 48)
+tabnext 4
 set stal=1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

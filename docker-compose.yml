@@ -1,0 +1,53 @@
+version: '3.7' 
+services:
+  fi1:
+    image: "services:latest"
+    env_file: ./fi1.env
+    environment:
+    - FI_DOMAIN=${FI1_DOMAIN}
+    - OTHER_FI_DOMAIN=${FI2_DOMAIN}
+    - BRIDGE_VERSION=${FI1_BRIDGE_VERSION}
+    - OTHER_FI_BRIDGE_VERSION=${FI2_BRIDGE_VERSION}
+    - PROXY=${VM_IP_ADDRESS}
+    - ISSUING_ACCOUNT=${ISSUING_ACCOUNT}
+    - RECEIVING_SEED=${FI1_RECEIVING_SEED}
+    - RECEIVING_ACCOUNT=${FI1_RECEIVING_ACCOUNT}
+    ports:
+    - "8000:8003"
+    depends_on:
+      - postgres1
+    networks:
+    - fi1-network
+  postgres1:
+    image: "postgres:9.6.1"
+    networks:
+      fi1-network:
+        aliases:
+          - db
+  fi2:
+    image: "services:latest"
+    env_file: ./fi2.env
+    environment:
+    - FI_DOMAIN=${FI2_DOMAIN}
+    - OTHER_FI_DOMAIN=${FI1_DOMAIN}
+    - BRIDGE_VERSION=${FI2_BRIDGE_VERSION}
+    - OTHER_FI_BRIDGE_VERSION=${FI1_BRIDGE_VERSION}
+    - PROXY=${VM_IP_ADDRESS}
+    - ISSUING_ACCOUNT=${ISSUING_ACCOUNT}
+    - RECEIVING_SEED=${FI2_RECEIVING_SEED}
+    - RECEIVING_ACCOUNT=${FI2_RECEIVING_ACCOUNT}
+    ports:
+    - "9000:8003"
+    depends_on:
+      - postgres2
+    networks:
+    - fi2-network
+  postgres2:
+    image: "postgres:9.6.1"
+    networks:
+      fi2-network:
+        aliases:
+          - db
+networks:
+  fi1-network:
+  fi2-network:

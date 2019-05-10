@@ -55,7 +55,6 @@ function check_fisc () { # {{{1
 }
 
 # main {{{1
-test -d services || mkdir services
 pushd services
 check_services
 popd
