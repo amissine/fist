@@ -10,11 +10,11 @@ endif
 set shortmess=aoO
 badd +17 .travis.yml
 badd +4 before_install.sh
-badd +72 .gitignore
+badd +75 .gitignore
 badd +1 package.json
 badd +35 https-proxy.js
 badd +1 Makefile
-badd +7 script.sh
+badd +48 script.sh
 badd +1 common.env
 badd +1 sp
 badd +13 ~/product/integration-tests/local.sh
@@ -25,8 +25,8 @@ badd +50 check_components.sh
 badd +20 docker-compose.yml
 badd +1 fi1.env
 badd +1 fi2.env
-badd +53 services/start.sh
-badd +1 runTests.js
+badd +1 services/start.sh
+badd +99 runTests.js
 badd +3 services/Dockerfile
 badd +1 services/bridge.cfg
 badd +18 services/compliance.cfg
@@ -132,13 +132,13 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-16
+15
 normal! zo
-let s:l = 2 - ((1 * winheight(0) + 5) / 10)
+let s:l = 1 - ((0 * winheight(0) + 5) / 10)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-2
+1
 normal! 0
 lcd ~/project/fist
 wincmd w
@@ -174,14 +174,14 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-26
+42
 normal! zo
-let s:l = 33 - ((23 * winheight(0) + 6) / 12)
+let s:l = 52 - ((16 * winheight(0) + 6) / 12)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-33
-normal! 02|
+52
+normal! 0
 lcd ~/project/fist
 wincmd w
 exe '1resize ' . ((&lines * 10 + 24) / 48)
@@ -336,12 +336,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 7) / 15)
+let s:l = 99 - ((13 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+99
+normal! 028|
 lcd ~/project/fist
 wincmd w
 argglobal
@@ -385,7 +385,30 @@ wincmd w
 exe '1resize ' . ((&lines * 15 + 24) / 48)
 exe '2resize ' . ((&lines * 14 + 24) / 48)
 exe '3resize ' . ((&lines * 14 + 24) / 48)
-tabnext 3
+tabedit ~/project/fist/.gitignore
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 79 - ((44 * winheight(0) + 22) / 45)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+79
+normal! 019|
+lcd ~/project/fist
+tabnext 5
 set stal=1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

@@ -72,4 +72,8 @@ typings/
 package-lock.json
 
 # Financial Institution Software Component
-# services/fisc/
+services/fisc/
+
+# Stellar services
+services/bridge
+services/compliance
