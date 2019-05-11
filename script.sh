@@ -40,13 +40,13 @@ node runTests.js
 docker-compose down
 docker image ls
 # Kill the proxy {{{1
-s=`ps -ef | grep $proxy | grep node | tail -n 1`; echo $s
-s=${s#* } # from the beginning of s, drop the shortest part that ends with ' ';
-          # keep the rest in s
-echo $s
-echo ${s%% *}
-pid2kill=${s%% *} # from the end of s, drop the longest part that starts with ' ';
-                  # keep the rest in pid2kill
-echo "length of pid2kill: ${#pid2kill}"
-echo "Killing pid $pid2kill"
-sudo -E kill $pid2kill
+#s=`ps -ef | grep $proxy | grep node | tail -n 1`; echo $s
+#s=${s#* } # from the beginning of s, drop the shortest part that ends with ' ';
+#          # keep the rest in s
+#echo $s
+#echo ${s%% *}
+#pid2kill=${s%% *} # from the end of s, drop the longest part that starts with ' ';
+#                  # keep the rest in pid2kill
+#echo "length of pid2kill: ${#pid2kill}"
+#echo "Killing pid $pid2kill"
+#sudo -E kill $pid2kill
