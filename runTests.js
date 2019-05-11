@@ -96,5 +96,5 @@ function log(msg) {
   if (typeof msg === 'object') {
     msg = JSON.stringify(msg);
   }
-  console.log("runTests   | "+msg)
+  console.log("runTests     | "+msg)
 }

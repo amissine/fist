@@ -49,8 +49,8 @@ function init_all() {
 function start () {
 
   # Modify /etc/hosts, tart the Stellar services
-  echo $VM_IP_ADDRESS $FI_DOMAIN >> /etc/hosts
-  echo $VM_IP_ADDRESS $OTHER_FI_DOMAIN >> /etc/hosts
+  echo $PROXY $FI_DOMAIN >> /etc/hosts
+  echo $PROXY  $OTHER_FI_DOMAIN >> /etc/hosts
   cat /etc/hosts
   ./bridge -c bridge.cfg &
   ./compliance -c compliance.cfg &
