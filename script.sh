@@ -23,6 +23,8 @@ export PROXY_TIMEOUT_MS=600000
 # Start proxy {{{1
 proxy='https-proxy.js'
 sudo -E $(which node) $proxy &
+#sleep 1
+#: <<'KILL'
 # Check/setup Stellar accounts {{{1
 if [ "$3" != "skip_Stellar_accounts" ]; then
 node checkAccount.js $FI1_RECEIVING_ACCOUNT
@@ -40,13 +42,12 @@ node runTests.js
 docker-compose down
 docker image ls
 # Kill the proxy {{{1
-#s=`ps -ef | grep $proxy | grep node | tail -n 1`; echo $s
-#s=${s#* } # from the beginning of s, drop the shortest part that ends with ' ';
-#          # keep the rest in s
-#echo $s
-#echo ${s%% *}
-#pid2kill=${s%% *} # from the end of s, drop the longest part that starts with ' ';
-#                  # keep the rest in pid2kill
-#echo "length of pid2kill: ${#pid2kill}"
-#echo "Killing pid $pid2kill"
-#sudo -E kill $pid2kill
+#KILL
+s=`ps -ef | grep $proxy | grep node | tail -n 1`; echo $s
+s=${s#* } # from the beginning of s, drop the shortest part that ends with ' ';
+          # keep the rest in s (leading spaces still possible)
+s=$(echo "$s" | xargs) # drop all extra spaces; keep the rest in s
+pid2kill=${s%% *} # from the end of s, drop the longest part that starts with ' ';
+                  # keep the rest in pid2kill
+echo "Killing pid $pid2kill"
+sudo -E kill $pid2kill

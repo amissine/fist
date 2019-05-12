@@ -10,7 +10,7 @@ endif
 set shortmess=aoO
 badd +17 .travis.yml
 badd +4 before_install.sh
-badd +75 .gitignore
+badd +79 .gitignore
 badd +1 package.json
 badd +35 https-proxy.js
 badd +1 Makefile
@@ -174,19 +174,45 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-42
+45
 normal! zo
-let s:l = 52 - ((16 * winheight(0) + 6) / 12)
+let s:l = 54 - ((16 * winheight(0) + 6) / 12)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-52
+54
 normal! 0
 lcd ~/project/fist
 wincmd w
 exe '1resize ' . ((&lines * 10 + 24) / 48)
 exe '2resize ' . ((&lines * 21 + 24) / 48)
 exe '3resize ' . ((&lines * 12 + 24) / 48)
+tabedit ~/project/fist/script.sh
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+argglobal
+setlocal fdm=marker
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+38
+normal! zo
+45
+normal! zo
+let s:l = 48 - ((47 * winheight(0) + 22) / 45)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+48
+normal! 010|
+lcd ~/project/fist
 tabedit ~/project/fist/services/start.sh
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -336,12 +362,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 99 - ((13 * winheight(0) + 7) / 15)
+let s:l = 100 - ((14 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-99
-normal! 028|
+100
+normal! 0
 lcd ~/project/fist
 wincmd w
 argglobal
@@ -401,14 +427,14 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 79 - ((44 * winheight(0) + 22) / 45)
+let s:l = 1 - ((0 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-79
-normal! 019|
+1
+normal! 0
 lcd ~/project/fist
-tabnext 5
+tabnext 3
 set stal=1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
